@@ -1,4 +1,4 @@
-opacity = 192
+opacity = 191
 
 bg_color = "'#1C1C1E'"
 fg_color = "'#FFFFFF'"
@@ -6,11 +6,11 @@ fg_color = "'#FFFFFF'"
 global_inner_margin = "8"
 space_between = 5  # space betwen each widget
 base_left_margin = 10 + space_between  # 10 to start from edge + the space between
-
+adjustment_from_top = -2
 widgets = {
     "clock": {
         "name": "clock",
-        "space_from_top": 57 + space_between,
+        "space_from_top": 57 + space_between + adjustment_from_top,
         "space_from_left": 0,
         "width": 130,
         "height": 0,
@@ -24,7 +24,7 @@ ${voffset 6}${font Oswald:size=13:bold}${alignc}${time %Y - %m - %d}
     },
     "battery": {
         "name": "battery",
-        "space_from_top": 57 + space_between,
+        "space_from_top": 57 + space_between + adjustment_from_top,
         "space_from_left": 130 + base_left_margin + space_between * 2,
         "width": 270,
         "height": 0,
@@ -40,7 +40,7 @@ ${battery_bar 5 BAT1}
     },
     "system": {
         "name": "system",
-        "space_from_top": 186 + space_between * 2,
+        "space_from_top": 186 + space_between * 2 + adjustment_from_top,
         "space_from_left": 0,
         "width": 230,
         "height": 0,
@@ -55,7 +55,7 @@ ${font Oswald:size=11:bold}Uptime ${font Oswald:size=9:bold}${alignr}${uptime}
     },
     "filesystem": {
         "name": "filesystem",
-        "space_from_top": 294 + space_between * 3,
+        "space_from_top": 294 + space_between * 3 + adjustment_from_top,
         "space_from_left": 0,
         "width": 230,
         "height": 74,
@@ -69,7 +69,7 @@ ${fs_bar 5 /}
     },
     "memory": {
         "name": "memory",
-        "space_from_top": 186 + space_between * 2,
+        "space_from_top": 186 + space_between * 2 + adjustment_from_top,
         "space_from_left": 230 + base_left_margin + space_between * 2,
         "width": 170,
         "height": 187,
@@ -89,7 +89,7 @@ ${top_mem name 5}${alignr}${top_mem mem 5}gib
     },
     "processes": {
         "name": "processes",
-        "space_from_top": 388 + space_between * 4,
+        "space_from_top": 388 + space_between * 4 + adjustment_from_top,
         "space_from_left": 161 + base_left_margin + space_between * 2,
         "width": 239,
         "height": 100,
@@ -112,7 +112,7 @@ ${top name 3} $alignr ${top pid 3}  ${top cpu 3}
     },
     "network": {
         "name": "network",
-        "space_from_top": 388 + space_between * 4,
+        "space_from_top": 388 + space_between * 4 + adjustment_from_top,
         "space_from_left": 0,
         "width": 0,
         "height": 267,
@@ -131,7 +131,7 @@ ${if_existing /proc/net/route wlp3s0}${upspeedgraph wlp3s0 25,160}]]
     },
     "weather": {
         "name": "weather",
-        "space_from_top": 680 + space_between * 4,
+        "space_from_top": 680 + space_between * 4 + adjustment_from_top,
         "space_from_left": 0,
         "width": 425,
         "height": 120,
