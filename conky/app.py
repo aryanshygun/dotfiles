@@ -6,7 +6,7 @@ fg_color = "'#FFFFFF'"
 global_inner_margin = "8"  # looks best compared to 5 and 10. numbers are adjust for 8
 space_between = 5  # space between each widget
 base_left_margin = 10 + space_between  # 10 to start from edge + the space between
-adjustment_from_top = -2 # offset to match the menubar
+adjustment_from_top = -2  # offset to match the menubar
 widgets = {
     "clock": {
         "name": "clock",
@@ -138,14 +138,14 @@ ${if_existing /proc/net/route wlp3s0}${upspeedgraph wlp3s0 25,160}]]
         "text": r"""
 conky.text = [[
 ${font Oswald:size=14:bold}Weather  ${hr 3}
-${execi 100 scripts/weather.sh}\
-${execi 100 scripts/weather-icon.sh $(jq -r '.weather[0].icon' scripts/weather.json)}\
-${image scripts/weather-icon.png -p 240,-1 -s 175x175}\
-${font Oswald:size=12:bold}${execi 100 jq -r '.name' scripts/weather.json} - ${execi 100 jq '.main.temp | floor' scripts/weather.json}°C
-${execi 100 jq -r '.weather[0].description' scripts/weather.json | sed 's/.*/\u&/'}${font}
-Wind: ${execi 100 jq '.wind.speed' scripts/weather.json} km/h
-Humidity: ${execi 100 jq '.main.humidity' scripts/weather.json}%
-Feels Like: ${execi 100 jq '.main.feels_like | floor' scripts/weather.json}°C
+${execi 10 /home/ryan/dev/dotfiles/conky/scripts/weather.sh "$(cat /home/ryan/dev/dotfiles/conky/scripts/.weather_api)"}
+${execi 10 /home/ryan/dev/dotfiles/conky/scripts/weather-icon.sh $(jq -r '.weather[0].icon' /home/ryan/dev/dotfiles/conky/scripts/weather.json)}\
+${image /home/ryan/dev/dotfiles/conky/scripts/weather-icon.png -p 240,-1 -s 175x175}\
+${font Oswald:size=12:bold}${execi 100 jq -r '.name' /home/ryan/dev/dotfiles/conky/scripts/weather.json} - ${execi 100 jq '.main.temp | floor' /home/ryan/dev/dotfiles/conky/scripts/weather.json}°C
+${execi 100 jq -r '.weather[0].description' /home/ryan/dev/dotfiles/conky/scripts/weather.json | sed 's/.*/\u&/'}${font}
+Wind: ${execi 100 jq '.wind.speed' /home/ryan/dev/dotfiles/conky/scripts/weather.json} km/h
+Humidity: ${execi 100 jq '.main.humidity' /home/ryan/dev/dotfiles/conky/scripts/weather.json}%
+Feels Like: ${execi 100 jq '.main.feels_like | floor' /home/ryan/dev/dotfiles/conky/scripts/weather.json}°C
 ]];
 
         """,
@@ -203,6 +203,7 @@ def set_widget(widget):
     with open(f"/home/ryan/dev/dotfiles/conky/widgets/{widget['name']}.conf", "w") as f:
         f.write(file)
 
+
 set_widget(widgets["clock"])
 set_widget(widgets["system"])
 set_widget(widgets["battery"])
@@ -210,6 +211,8 @@ set_widget(widgets["memory"])
 set_widget(widgets["processes"])
 set_widget(widgets["filesystem"])
 set_widget(widgets["network"])
-set_widget(widgets["weather"])
+set_widget(
+    widgets["weather"]
+)  # create your own weather api and add to the weather.sh file
 
 # after this run the launch_conkys.sh file in order for the widgets to run
