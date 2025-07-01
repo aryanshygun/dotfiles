@@ -3,10 +3,10 @@ opacity = 191
 bg_color = "'#1C1C1E'"
 fg_color = "'#FFFFFF'"
 
-global_inner_margin = "8"
-space_between = 5  # space betwen each widget
+global_inner_margin = "8"  # looks best compared to 5 and 10. numbers are adjust for 8
+space_between = 5  # space between each widget
 base_left_margin = 10 + space_between  # 10 to start from edge + the space between
-adjustment_from_top = -2
+adjustment_from_top = -2 # offset to match the menubar
 widgets = {
     "clock": {
         "name": "clock",
@@ -191,7 +191,6 @@ def set_config(space_from_top, space_from_left, width, height):
 
 
 def set_widget(widget):
-    # global space_between
     file = (
         set_config(
             widget["space_from_top"],
@@ -203,8 +202,6 @@ def set_widget(widget):
     )
     with open(f"/home/ryan/dev/dotfiles/conky/widgets/{widget['name']}.conf", "w") as f:
         f.write(file)
-    # space_between += interval
-
 
 set_widget(widgets["clock"])
 set_widget(widgets["system"])
@@ -214,3 +211,5 @@ set_widget(widgets["processes"])
 set_widget(widgets["filesystem"])
 set_widget(widgets["network"])
 set_widget(widgets["weather"])
+
+# after this run the launch_conkys.sh file in order for the widgets to run
