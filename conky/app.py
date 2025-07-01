@@ -1,4 +1,4 @@
-opacity = 256
+opacity = 192
 
 bg_color = "'#1C1C1E'"
 fg_color = "'#FFFFFF'"
@@ -98,7 +98,7 @@ conky.text = [[
 ${font Oswald:size=14:bold}Processes  ${hr 3}
 ${font}Freq ${alignr}$freq_g Ghz
 CPU Temp ${alignr}${exec sensors | grep 'Package' | awk -F'+' '{print $2}' | awk -F'.' '{print $1}'}°C
-${cpugraph cpu0 25,225}
+${cpugraph cpu0 25,236}
 Core 1 ${alignr}${cpu cpu1}% ${cpubar cpu1 9,140}
 Core 2 ${alignr}${cpu cpu3}% ${cpubar cpu3 9,140}
 Core 3 ${alignr}${cpu cpu5}% ${cpubar cpu5 9,140}
@@ -119,14 +119,35 @@ ${top name 3} $alignr ${top pid 3}  ${top cpu 3}
         "text": """
 conky.text = [[
 ${font Oswald:size=14:bold}${if_existing /sys/class/net/wlp3s0/operstate up}ONLINE${else}OFFLINE${endif}  ${hr 3}
-${font Oswald:size=12:bold}${addr wlp3s0}
-${exec curl -s www.icanhazip.com}
-${wireless_ap wlp3s0}
+${font Oswald:size=11:bold}PRIVATE${alignr}${addr wlp3s0}
+PUBLIC${alignr}${exec curl -s www.icanhazip.com}
+MAC${alignr}${wireless_ap wlp3s0}
 ${hr 3}
 Down - ${downspeedf usb0} kib/s
 ${if_existing /proc/net/route wlp3s0}${downspeedgraph wlp3s0 25,160}
 Up - ${upspeedf usb0} kib/s
 ${if_existing /proc/net/route wlp3s0}${upspeedgraph wlp3s0 25,160}]]
+        """,
+    },
+    "weather": {
+        "name": "weather",
+        "space_from_top": 680 + space_between * 4,
+        "space_from_left": 0,
+        "width": 425,
+        "height": 120,
+        "text": r"""
+conky.text = [[
+${font Oswald:size=14:bold}Weather  ${hr 3}
+${execi 100 scripts/weather.sh}\
+${execi 100 scripts/weather-icon.sh $(jq -r '.weather[0].icon' scripts/weather.json)}\
+${image scripts/weather-icon.png -p 240,-1 -s 175x175}\
+${font Oswald:size=12:bold}${execi 100 jq -r '.name' scripts/weather.json} - ${execi 100 jq '.main.temp | floor' scripts/weather.json}°C
+${execi 100 jq -r '.weather[0].description' scripts/weather.json | sed 's/.*/\u&/'}${font}
+Wind: ${execi 100 jq '.wind.speed' scripts/weather.json} km/h
+Humidity: ${execi 100 jq '.main.humidity' scripts/weather.json}%
+Feels Like: ${execi 100 jq '.main.feels_like | floor' scripts/weather.json}°C
+]];
+
         """,
     },
 }
@@ -192,3 +213,4 @@ set_widget(widgets["memory"])
 set_widget(widgets["processes"])
 set_widget(widgets["filesystem"])
 set_widget(widgets["network"])
+set_widget(widgets["weather"])

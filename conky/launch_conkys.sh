@@ -7,3 +7,4 @@ conky -dq -c ~/dev/dotfiles/conky/widgets/network.conf
 conky -dq -c ~/dev/dotfiles/conky/widgets/processes.conf
 conky -dq -c ~/dev/dotfiles/conky/widgets/memory.conf
 conky -dq -c ~/dev/dotfiles/conky/widgets/filesystem.conf
+conky -dq -c ~/dev/dotfiles/conky/widgets/weather.conf
