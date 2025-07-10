@@ -1,5 +1,8 @@
 #!/bin/zsh
-sleep 3
+pkill -x conky
+sleep 1
+python3 /home/ryan/dev/dotfiles/conky/app.py
+sleep 2
 conky -dq -c ~/dev/dotfiles/conky/widgets/system.conf
 conky -dq -c ~/dev/dotfiles/conky/widgets/clock.conf
 conky -dq -c ~/dev/dotfiles/conky/widgets/battery.conf
