@@ -13,7 +13,6 @@ DEST="$HOME/.local/share/konsole/RyanMode.colorscheme"
 
 cp "$SOURCE" "$DEST"
 sleep 1
-konsoleprofile colors=DarkMode
 echo "Dark Mode Activated - Konsole [Monochrome - RyanDark]"
 
 # Conky ---------------------------------------------
