@@ -2,7 +2,7 @@
 
 # VSCode ---------------------------------------------
 VSCODE_SETTINGS="$HOME/.config/Code/User/settings.json"
-VSCODE_THEME="Tokyo Night Storm"
+VSCODE_THEME="Monokai Pro (Filter Spectrum)"
 tmpfile=$(mktemp)
 jq --arg theme "$VSCODE_THEME" '.["workbench.colorTheme"] = $theme' "$VSCODE_SETTINGS" > "$tmpfile" && mv "$tmpfile" "$VSCODE_SETTINGS"
 echo "Dark Mode Activated - VScode [$VSCODE_THEME]"
