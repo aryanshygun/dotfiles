@@ -10,8 +10,8 @@ CURRENT_MODE=$(cat "$STATE_FILE")
 
 if [[ "$CURRENT_MODE" == "light" ]]; then
     echo "dark" > "$STATE_FILE"
-    /home/ryan/dev/dotfiles/theme_toggle/dark_mode.sh
+    /home/ryan/dotfiles/theme_toggle/dark_mode.sh
 else
     echo "light" > "$STATE_FILE"
-    /home/ryan/dev/dotfiles/theme_toggle/light_mode.sh
+    /home/ryan/dotfiles/theme_toggle/light_mode.sh
 fi

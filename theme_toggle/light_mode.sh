@@ -16,7 +16,7 @@ sleep 1
 echo "Light Mode Activated - Konsole [Monochrome - RyanLight]"
 
 # Conky ---------------------------------------------
-COLOR_JSON="$HOME/dev/dotfiles/conky/colors.json"
+COLOR_JSON="$HOME/dotfiles/conky/colors.json"
 cat > "$COLOR_JSON" <<EOF
 {
   "background": "#D6D8DF",
@@ -24,7 +24,7 @@ cat > "$COLOR_JSON" <<EOF
 }
 EOF
 pkill conky
-"$HOME/dev/dotfiles/conky/launch_conkys.sh"
+"$HOME/dotfiles/conky/launch_conkys.sh"
 echo "Light Mode Activated - Conky [Changed colors.json]"
 
 # KDE Color ---------------------------------------------

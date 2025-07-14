@@ -2,7 +2,7 @@ import json
 
 
 opacity = 256
-with open("/home/ryan/dev/dotfiles/conky/colors.json", "r") as f:
+with open("/home/ryan/dotfiles/conky/colors.json", "r") as f:
     color = json.load(f)
 
 bg_color = f"'{color['background']}'"
@@ -143,13 +143,13 @@ ${if_existing /proc/net/route wlp3s0}${upspeedgraph wlp3s0 25,160}]]
         "text": r"""
 conky.text = [[
 ${font Oswald:size=14:bold}Weather  ${hr 3}
-${execi 10 /home/ryan/dev/dotfiles/conky/scripts/weather.sh "$(cat /home/ryan/dev/dotfiles/conky/scripts/.weather_api)"}${execi 10 /home/ryan/dev/dotfiles/conky/scripts/weather-icon.sh $(jq -r '.weather[0].icon' /home/ryan/dev/dotfiles/conky/scripts/weather.json)}\
-${image /home/ryan/dev/dotfiles/conky/scripts/weather-icon.png -p 240,-1 -s 175x175}\
-${font Oswald:size=12:bold}${execi 100 jq -r '.name' /home/ryan/dev/dotfiles/conky/scripts/weather.json} - ${execi 100 jq '.main.temp | floor' /home/ryan/dev/dotfiles/conky/scripts/weather.json}°C
-${execi 100 jq -r '.weather[0].description' /home/ryan/dev/dotfiles/conky/scripts/weather.json | sed 's/.*/\u&/'}${font}
-Wind: ${execi 100 jq '.wind.speed' /home/ryan/dev/dotfiles/conky/scripts/weather.json} km/h
-Humidity: ${execi 100 jq '.main.humidity' /home/ryan/dev/dotfiles/conky/scripts/weather.json}%
-Feels Like: ${execi 100 jq '.main.feels_like | floor' /home/ryan/dev/dotfiles/conky/scripts/weather.json}°C
+${execi 10 /home/ryan/dotfiles/conky/scripts/weather.sh "$(cat /home/ryan/dotfiles/conky/scripts/.weather_api)"}${execi 10 /home/ryan/dotfiles/conky/scripts/weather-icon.sh $(jq -r '.weather[0].icon' /home/ryan/dotfiles/conky/scripts/weather.json)}\
+${image /home/ryan/dotfiles/conky/scripts/weather-icon.png -p 240,-1 -s 175x175}\
+${font Oswald:size=12:bold}${execi 100 jq -r '.name' /home/ryan/dotfiles/conky/scripts/weather.json} - ${execi 100 jq '.main.temp | floor' /home/ryan/dotfiles/conky/scripts/weather.json}°C
+${execi 100 jq -r '.weather[0].description' /home/ryan/dotfiles/conky/scripts/weather.json | sed 's/.*/\u&/'}${font}
+Wind: ${execi 100 jq '.wind.speed' /home/ryan/dotfiles/conky/scripts/weather.json} km/h
+Humidity: ${execi 100 jq '.main.humidity' /home/ryan/dotfiles/conky/scripts/weather.json}%
+Feels Like: ${execi 100 jq '.main.feels_like | floor' /home/ryan/dotfiles/conky/scripts/weather.json}°C
 ]];
 
         """,
@@ -230,7 +230,7 @@ def set_widget(widget):
         )
         + widget["text"]
     )
-    with open(f"/home/ryan/dev/dotfiles/conky/widgets/{widget['name']}.conf", "w") as f:
+    with open(f"/home/ryan/dotfiles/conky/widgets/{widget['name']}.conf", "w") as f:
         f.write(file)
 
 
