@@ -1,2 +1,3 @@
 conky/scripts/.weather_api
 conky/scripts/weather.json
+conky/widgets/*.conf

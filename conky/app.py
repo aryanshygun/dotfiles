@@ -1,7 +1,7 @@
 import json
 
 
-opacity = 256
+opacity = 205
 with open("/home/ryan/dotfiles/conky/colors.json", "r") as f:
     color = json.load(f)
 
