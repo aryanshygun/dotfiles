@@ -1,7 +1,8 @@
 import json
 
 
-opacity = 205
+# opacity = 205
+opacity = 255
 with open("/home/ryan/dotfiles/conky/colors.json", "r") as f:
     color = json.load(f)
 
@@ -196,7 +197,7 @@ def set_config(space_from_top, space_from_left, width, height):
         "draw_shades": "no",
         "no_buffers": "true",
         "cpu_avg_samples": "1",
-        "update_interval": "1.0",
+        "update_interval": "5.0",
         "uppercase": "true",
         "maximum_width": width,
         "minimum_width": width,
