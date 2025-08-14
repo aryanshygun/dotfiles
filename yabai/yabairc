@@ -30,4 +30,4 @@ yabai -m config external_bar all:20:20
 
 # start companion apps
 pgrep -x skhd >/dev/null || skhd &
-borders active_color=0xffe1e3e4 hidpi=on width=5.0 &
+borders active_color=0xf1bfaff hidpi=on width=5.0 &

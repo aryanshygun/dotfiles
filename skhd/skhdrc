@@ -35,7 +35,7 @@ ctrl + alt + shift - c: \
 ctrl + alt + shift - 4 : yabai -m space --mirror y-axis
 ctrl + alt + shift - v : yabai -m space --mirror x-axis
 
-
+f4f 1b fa ff
 
 # toggle a display between float and bsp
 ctrl + alt + shift - 1 : yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end')
