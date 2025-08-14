@@ -1,0 +1,62 @@
+###### FOCUS WINDOWS ALL OVER
+# focus left 
+ctrl + alt + shift - q : \
+  yabai -m window --focus west || \
+  (yabai -m display --focus prev && yabai -m window --focus east)
+# focus right 
+ctrl + alt + shift - r : \
+  yabai -m window --focus east || \
+  (yabai -m display --focus next && yabai -m window --focus west)
+# focus down and up
+ctrl + alt + shift - w : yabai -m window --focus south
+ctrl + alt + shift - e : yabai -m window --focus north
+
+
+###### MOVE WINDOW IN THE SAME DISPLAY
+ctrl + alt + shift - a : yabai -m window --swap west
+ctrl + alt + shift - s : yabai -m window --swap south
+ctrl + alt + shift - d : yabai -m window --swap north
+ctrl + alt + shift - f : yabai -m window --swap east
+
+
+###### MOVE WINDOW TO THE NEXT DISPLAY 
+ctrl + alt + shift - c: \
+  if [ "$(yabai -m query --displays --display | jq -r '.index')" = "1" ]; then \
+    yabai -m window --display 2; yabai -m display --focus 2; \
+  else \
+    yabai -m window --display 1; yabai -m display --focus 1; \
+  fi
+
+
+# toggle a display between float and bsp
+ctrl + alt + shift - 1 : yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end')
+
+# toggle a window to go fullscreen
+ctrl + alt + shift - 2 : yabai -m window --toggle zoom-fullscreen
+
+# float / unfloat a window and center on screen
+ctrl + alt + shift - 3 : yabai -m window --toggle float;\
+                          yabai -m window --grid 4:4:1:1:2:2
+
+# balance out the yabai
+ctrl + alt + shift - z : \
+  yabai -m space --balance && /Users/ryan/.config/borders/bordersrc --restart-service
+
+# in macos settings, hyper + x is set to minimize the window
+
+
+###### UNUSED (saved bc of syntax)
+#yabai -m window --grid 4:4:1:1:2:2 ## toggle sticky alt - s : yabai -m window --toggle sticky ## toggle sticky, float and resize to picture-in-picture size alt - p : yabai -m window --toggle sticky;\ yabai -m window --grid 5:5:4:0:1:1 ## change layout of desktop ctrl + alt - a : yabai -m space --layout bsp ctrl + alt - d : yabai -m space --layout float
+## float / unfloat a window
+# ctrl + alt + shift - 3: yabai -m window --toggle float;\
+## switch focus between displays
+#ctrl + alt + shift - z  : yabai -m display --focus next || yabai -m display --focus first
+## switch focus between displays but better
+#ctrl + alt + shift - z : \
+#  if [ "$(yabai -m query --displays --display | jq -r '.index')" = "1" ]; then \
+#    yabai -m display --focus 2; \
+#  else \
+#    yabai -m display --focus 1; \
+#  fi
+## not working
+#ctrl + alt + shift - c : yabai -m window --display next || yabai -m window --display first

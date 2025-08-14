@@ -9,6 +9,7 @@ sleep 1
 qdbus6 org.kde.KWin /KWin org.kde.KWin.setCurrentDesktop 2
 sleep 1
 konsole -e 'cava' &
+konsole -e 'tty-clock -c -C 7 -S -b -n -B -D' &
 spotify &
 sleep 1
 qdbus6 org.kde.KWin /KWin org.kde.KWin.setCurrentDesktop 3
