@@ -1,3 +1,5 @@
 conky/scripts/.weather_api
 conky/scripts/weather.json
 conky/widgets/*.conf
+.DS_Store
+Karabiner/.DS_Store

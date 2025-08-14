@@ -28,6 +28,15 @@ ctrl + alt + shift - c: \
   fi
 
 
+## rotate tree 90
+# hyper - r : yabai -m space --rotate 90
+
+## flip the tree vertically
+ctrl + alt + shift - 4 : yabai -m space --mirror y-axis
+ctrl + alt + shift - v : yabai -m space --mirror x-axis
+
+
+
 # toggle a display between float and bsp
 ctrl + alt + shift - 1 : yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end')
 
