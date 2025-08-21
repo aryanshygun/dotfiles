@@ -31,8 +31,15 @@ for i = 1, 10, 1 do
       height = 26,
       border_color = colors.black,
     },
-    popup = { background = { border_width = 5, border_color = colors.black } }
+    popup = { background = { border_width = 5, border_color = colors.black } },
+    
+    click_script = string.format(
+          [[osascript -e 'tell application "System Events" to key code %d using control down']],
+          17 + i -- 1 = keycode 18, so offset by 17
+    )
+
   })
+
 
   spaces[i] = space
 

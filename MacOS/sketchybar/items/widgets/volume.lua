@@ -21,7 +21,7 @@ local volume_icon = sbar.add("item", "widgets.volume2", {
     string = icons.volume._100,
     width = 0,
     align = "left",
-    color = colors.grey,
+    color = colors.purple,
     font = {
       style = settings.font.style_map["Regular"],
       size = 14.0,
@@ -30,6 +30,7 @@ local volume_icon = sbar.add("item", "widgets.volume2", {
   label = {
     width = 25,
     align = "left",
+    color = colors.purple,
     font = {
       style = settings.font.style_map["Regular"],
       size = 14.0,
@@ -118,14 +119,14 @@ local function volume_toggle_details(env)
         for device in string.gmatch(available, '[^\r\n]+') do
           local color = colors.grey
           if current == device then
-            color = colors.white
+            color = colors.purple
           end
           sbar.add("item", "volume.device." .. counter, {
             position = "popup." .. volume_bracket.name,
             width = popup_width,
             align = "center",
             label = { string = device, color = color },
-            click_script = 'SwitchAudioSource -s "' .. device .. '" && sketchybar --set /volume.device\\.*/ label.color=' .. colors.grey .. ' --set $NAME label.color=' .. colors.white
+            click_script = 'SwitchAudioSource -s "' .. device .. '" && sketchybar --set /volume.device\\.*/ label.color=' .. colors.purple .. ' --set $NAME label.color=' .. colors.purple
 
           })
           counter = counter + 1
